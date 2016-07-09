@@ -6,7 +6,7 @@ use v5.10;
 use Furl;
 use JSON::XS qw/decode_json/;
 use HTTP::Request::Common;
-use Digest::MD5 qw/md5_hex/;
+use Digest::SHA qw/sha256_hex/;
 
 my $f = Furl->new;
 
@@ -21,10 +21,10 @@ my $mac = "https://github.com/Code-Hex/pget/releases/download/${version}/pget_da
 my $linux = "https://github.com/Code-Hex/pget/releases/download/${version}/pget_linux_amd64.tar.gz";
 
 $res = $f->request(GET $mac);
-my $mac_hash = md5_hex $res->content;
+my $mac_hash = sha256_hex $res->content;
 
 $res = $f->request(GET $linux);
-my $linux_hash = md5_hex $res->content;
+my $linux_hash = sha256_hex $res->content;
 
 my $rb = << "EOM";
 require 'formula'
@@ -33,10 +33,10 @@ class Pget < Formula
   homepage 'https://github.com/Code-Hex/pget'
   if OS.mac?
   	url "https://github.com/Code-Hex/pget/releases/download/#{HOMEBREW_PGET_VERSION}/pget_darwin_amd64.zip"
-    sha1 "%s"
+    sha256 "%s"
   elsif OS.linux?
   	url "https://github.com/Code-Hex/pget/releases/download/#{HOMEBREW_PGET_VERSION}/pget_linux_amd64.tar.gz"
-    sha1 "%s"
+    sha256 "%s"
   end
   version HOMEBREW_PGET_VERSION
   head 'https://github.com/Code-Hex/pget.git', :branch => 'master'

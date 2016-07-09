@@ -4,10 +4,10 @@ class Pget < Formula
   homepage 'https://github.com/Code-Hex/pget'
   if OS.mac?
   	url "https://github.com/Code-Hex/pget/releases/download/#{HOMEBREW_PGET_VERSION}/pget_darwin_amd64.zip"
-    sha1 "2207148e41e4143f05e60f7a585aaf57"
+    sha256 "c7ff10f4e42a75a3adc715c1fe5448bfeab75459def278c35624076b726b651f"
   elsif OS.linux?
   	url "https://github.com/Code-Hex/pget/releases/download/#{HOMEBREW_PGET_VERSION}/pget_linux_amd64.tar.gz"
-    sha1 "2ed56f5e985848480f0b829cdab408b4"
+    sha256 "ca758514dfecc87e7bc91591aa00643d305273f780aa07cd5552fdfbff7a01c6"
   end
   version HOMEBREW_PGET_VERSION
   head 'https://github.com/Code-Hex/pget.git', :branch => 'master'
