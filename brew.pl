@@ -3,12 +3,12 @@
 use strict;
 use warnings;
 use v5.10;
-use Furl;
+use LWP::UserAgent;
 use JSON::XS qw/decode_json/;
 use HTTP::Request::Common;
 use Digest::SHA qw/sha256_hex/;
 
-my $f = Furl->new;
+my $f = LWP::UserAgent->new;
 
 my $release_latest = "https://api.github.com/repos/Code-Hex/pget/releases/latest";
 my $res = $f->request(GET $release_latest);
@@ -21,6 +21,7 @@ my $mac = "https://github.com/Code-Hex/pget/releases/download/${version}/pget_da
 my $linux = "https://github.com/Code-Hex/pget/releases/download/${version}/pget_linux_amd64.tar.gz";
 
 $res = $f->request(GET $mac);
+
 my $mac_hash = sha256_hex $res->content;
 
 $res = $f->request(GET $linux);
