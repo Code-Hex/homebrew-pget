@@ -1,13 +1,13 @@
 require 'formula'
-HOMEBREW_PGET_VERSION='0.0.3'
+HOMEBREW_PGET_VERSION='0.0.4'
 class Pget < Formula
   homepage 'https://github.com/Code-Hex/pget'
   if OS.mac?
   	url "https://github.com/Code-Hex/pget/releases/download/#{HOMEBREW_PGET_VERSION}/pget_darwin_amd64.zip"
-    sha256 "c321a43e31b444cbd283c9926b8d4422836b2b3ef65866179ef6fc138dbcd5cb"
+    sha256 "6e83ac87d40e216160378e82f47c93cb92791e43977a44d27cfcc8f463101fb0"
   elsif OS.linux?
   	url "https://github.com/Code-Hex/pget/releases/download/#{HOMEBREW_PGET_VERSION}/pget_linux_amd64.tar.gz"
-    sha256 "657ad03ff913aa12784d6d261616005aa5ebdef562a3c543935176ca67a186e1"
+    sha256 "88cdf0a9095c1e693f2ecf3dcdcf349d7c62b9820012d8feaa826e6a9e6a98f7"
   end
   version HOMEBREW_PGET_VERSION
   head 'https://github.com/Code-Hex/pget.git', :branch => 'master'
